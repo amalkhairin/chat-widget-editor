@@ -51,17 +51,17 @@ key `nameFontSize`, `messageFontSize`, dan `ownerNameColor` berfungsi sebagai un
 
 Masing-masing unique key tersebut berisikan atribut seperti `id`, `css`, `type`, `label`, `group`, `sub-group`.
 
-atribut `id` berfungsi sebagai id yang akan di set pada id input(color/number/text). pastikan value `id` sama dengan value `css` tanpa `--`.
+- atribut `id` berfungsi sebagai id yang akan di set pada id input(color/number/text). pastikan value `id` sama dengan value `css` tanpa `--`.
 
-atribut `css` berfungsi sebagai key untuk mengakses variable CSS agar dapat dilakukan modifikasi. pastikan value dari atribut `css` ini sama dengan yang ada di file `style.css` dan `css.js`.
+- atribut `css` berfungsi sebagai key untuk mengakses variable CSS agar dapat dilakukan modifikasi. pastikan value dari atribut `css` ini sama dengan yang ada di file `style.css` dan `css.js`.
 
-atribut `type` berfungsi untuk mendefinisikan tipe inputan untuk variabel tersebut. saat ini hanya terdapat 2 tipe inputan yaitu `colorPicker` dan `number`.
+- atribut `type` berfungsi untuk mendefinisikan tipe inputan untuk variabel tersebut. saat ini hanya terdapat 2 tipe inputan yaitu `colorPicker` dan `number`.
 
-atribut `label` berfungsi untuk mendefinisikan label untuk input.
+- atribut `label` berfungsi untuk mendefinisikan label untuk input.
 
-atribut `group` berfungsi untuk membuat grouping atau pengelompokan jenis variabel seperti `Chat Settings`, `Membership Settings`, dan `Superchat Settings`.
+- atribut `group` berfungsi untuk membuat grouping atau pengelompokan jenis variabel seperti `Chat Settings`, `Membership Settings`, dan `Superchat Settings`.
 
-atribut `sub-group` berfungsi untuk membuat sub-group atau sub pengelompokan berdasarkan parent group pada atribut `group`. jika `group` tidak memiliki `sub-group` maka valuenya harus `"none"`
+- atribut `sub-group` berfungsi untuk membuat sub-group atau sub pengelompokan berdasarkan parent group pada atribut `group`. jika `group` tidak memiliki `sub-group` maka valuenya harus `"none"`
 
 2. Isi file `style.css` pada `./config/css/style.css` dengan CSS hasil customize.
 
