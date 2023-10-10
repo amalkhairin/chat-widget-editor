@@ -8,6 +8,53 @@ async function getJsonData(path) {
     }
 }
 
+function loadData(selector, key, identifier) {
+    $(selector).val( localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim());
+    docStyle.setProperty(key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim());
+    styleChat = replaceValue(styleChat, key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim())
+
+}
+
+function loadDataNumber(selector, key, identifier) {
+    $(selector).val( localStorage.getItem(identifier+key) ?? (docStyleGetter.getPropertyValue(key).trim().replace("px","")));
+    docStyle.setProperty(key, localStorage.getItem(identifier+key) != null ? localStorage.getItem(identifier+key) + 'px' : docStyleGetter.getPropertyValue(key).trim());
+    styleChat = replaceValue(styleChat, key, localStorage.getItem(identifier+key) != null ? localStorage.getItem(identifier+key) + 'px' : docStyleGetter.getPropertyValue(key).trim())
+}
+
+function loadWidgetData(fields, identifier) {
+    $.each(fields, function(key, field){
+        if (field.type === 'colorPicker') {
+            loadData("."+field.id, field.css, identifier)
+        } else if (field.type === 'number') {
+            loadDataNumber("."+field.id, field.css, identifier)
+        }
+    })
+}
+
+function replaceValue(data, variableName, newValue) {
+    var regex = new RegExp(variableName + ':\\s*(.*?);', 'g');
+    return data.replace(regex, variableName + ': ' + newValue + ';');
+}
+
+function addEventTrigger(fields, identifier){
+    $.each(fields, function(key, field) {
+        if (field.type === 'colorPicker') {
+            $("."+field.id).on('input', function(){
+                docStyle.setProperty(field.css, $(this).val());
+                localStorage.setItem(identifier+field.css, $(this).val());
+                $("."+field.id).val($(this).val())
+                styleChat = replaceValue(styleChat, field.css, $(this).val())
+            })
+        } else if (field.type === 'number') {
+            $("#"+field.id).on('change', function(){
+                docStyle.setProperty(field.css, $(this).val() + "px");
+                localStorage.setItem(identifier+field.css, $(this).val());
+                styleChat = replaceValue(styleChat, field.css, $(this).val() + "px");
+            })
+        }
+    })
+}
+
 function onEventShow(fields) {
     var groupLists = {};
 
