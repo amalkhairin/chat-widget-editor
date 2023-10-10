@@ -11,49 +11,128 @@
 
 
 ## Setup
-1. Atur variabel yang digunakan pada CSS pada file field.json
-```bash
-  ./config/data/field.json
-```
+#### 1. Atur variable CSS yang sudah di customize agar memiliki identifier untuk masing-masing bagian.
+Pisahkan perbagian seperto `owner/streamer`, `moderator`, `member`, dan seterusnya.
+penamaan perbagian menguti rules:
+- owner (untuk Streamer atau Channel Owner)
+- moderator (untuk Moderator)
+- member (untuk Member)
+- general (untuk General Viewers)
+- membership (untuk Membership dan Gift)
+- sc (untuk Superchat dan SuperStricker)
 
-isi file field.json:
-```json
-{
-    "nameFontSize": {
-        "id": "name-font-size",
-        "css": "--name-font-size",
-        "type": "number",
-        "label": "Name Font Size",
-        "group": "Chat Settings",
-        "sub-group": "none"
-    },
-    "messageFontSize": {
-        "id": "message-font-size",
-        "css": "--message-font-size",
-        "type": "number",
-        "label": "Message Font Size",
-        "group": "Chat Settings",
-        "sub-group": "none"
-    },
-    "ownerNameColor": {
-        "id": "owner-name-color",
-        "css": "--owner-name-color",
-        "type": "colorPicker",
-        "label": "Name Color",
-        "group": "Chat Settings",
-        "sub-group": "Streamer"
-    },
-    ...
+contoh:
+```CSS
+:root {
+  /* owner */
+  --owner-name-color: #000000;
+  --owner-bg-name-color: #FFC774;
+  --owner-message-color: #281E14;
+  --owner-bg-message-color: #FFE9DD;
+  --owner-bottom-shadow-color: #D19B7D;
+  --owner-shadow-color: #FFE9DD;
+  /* end-owner */
+
+  /* moderator */
+  --moderator-name-color: #ffffff;
+  --moderator-bg-name-color: #748AFF;
+  --moderator-message-color: #281E14;
+  --moderator-bg-message-color: #FFE9DD;
+  --moderator-bottom-shadow-color: #D19B7D;
+  --moderator-shadow-color: #FFE9DD;
+  /* end-moderator */
+
+  /* member */
+  --member-name-color: #000000;
+  --member-bg-name-color: #88CC88;
+  --member-message-color: #281E14;
+  --member-bg-message-color: #FFE9DD;
+  --member-bottom-shadow-color: #D19B7D;
+  --member-shadow-color: #FFE9DD;
+  /* end-member */
+
+  /* general */
+  --general-name-color: #000000;
+  --general-bg-name-color: #FF9E74;
+  --general-message-color: #281E14;
+  --general-bg-message-color: #FFE9DD;
+  --general-bottom-shadow-color: #D19B7D;
+  --general-shadow-color: #FFE9DD;
+  /* end-general */
+
+  /* membership */
+  --membership-name-color: #281E14;
+  --membership-subtext-color: #281E14;
+  --membership-other-color: #281E14;
+  --membership-message-color: #281E14;
+  --membership-bg-color: #FFE9DD;
+  --membership-bg-name-color: #FF9E74;
+  --membership-bottom-shadow-color: #D19B7D;
+  --membership-shadow-color: #FFE9DD;
+  /* end-membership */
+
+  /* sc */
+  --font-color-sc: #281E14;
+  --background-sc: #FFE9DD;
+  --bottom-shadow-color-sc: #D19B7D;
+  --shadow-color-sc: #FFE9DD;
+  /* end-sc */
+
+  /* chat-font-size */
+  --name-font-size: 14px;
+  --message-font-size: 16px;
+  /* end-chat-font-size */
+
+  /* sc-font-size */
+  --sc-name-font-size: 16px;
+  --sc-amount-font-size: 24px;
+  --sc-message-font-size: 18px;
+  /* end-sc-font-size */
+
+  /* membership-font-size */
+  --membership-name-font-size: 16px;
+  --membership-subtext-font-size: 18px;
+  --membership-other-font-size: 14px;
+  --membership-message-font-size: 18px;
+  /* end-membership-font-size */
 }
 ```
 
-key `nameFontSize`, `messageFontSize`, dan `ownerNameColor` berfungsi sebagai unique key yang berisikan value masing-masing variabel CSS.
+untuk penamaan yang tidak ada dalam rules atau ingin menambahkan penamaan baru, harap memperhatikan pada file `utilities.js` pada `./config/js/utilities.js` pada fungsi `loadWidgetStyle()`
+```javascript
+function loadWidgetStyle(){
+    let ownerStyle = getStyle(styleChat, "/* owner */","/* end-owner */");
+    let moderatorStyle = getStyle(styleChat, "/* moderator */","/* end-moderator */");
+    let memberStyle = getStyle(styleChat, "/* member */","/* end-member */");
+    let generalStyle = getStyle(styleChat, "/* general */","/* end-general */");
+    let membershipStyle = getStyle(styleChat, "/* membership */","/* end-membership */");
+    let scStyle = getStyle(styleChat, "/* sc */","/* end-sc */");
+    let chatFontSizeStyle = getStyle(styleChat, "/* chat-font-size */","/* end-chat-font-size */");
+    let scFontSizeStyle = getStyle(styleChat, "/* sc-font-size */","/* end-sc-font-size */");
+    let membershipFontSizeStyle = getStyle(styleChat, "/* membership-font-size */","/* end-membership-font-size */");
+
+    generateStyleData(chatFontSizeStyle, "Chat Settings", "none", "number")
+    generateStyleData(ownerStyle, "Chat Settings", "Streamer", "colorPicker")
+    generateStyleData(moderatorStyle, "Chat Settings", "Moderator", "colorPicker")
+    generateStyleData(memberStyle, "Chat Settings", "Member", "colorPicker")
+    generateStyleData(generalStyle, "Chat Settings", "General", "colorPicker")
+
+    generateStyleData(membershipFontSizeStyle, "Membership Settings", "none", "number")
+    generateStyleData(membershipStyle, "Membership Settings", "none", "colorPicker")
+    
+    generateStyleData(scFontSizeStyle, "Superchat Settings", "none", "number")
+    generateStyleData(scStyle, "Superchat Settings", "none", "colorPicker")
+}
+```
+sesuaikan pada fungsi `loadWidgetStyle` untuk setiap bagian-bagian yang telah dipisahkan pada CSS hasil customize.
+
+fungsi `generateStyleData` menerima parameter `generateStyleData(styles, group, subgroup, type)`. fungsi ini akan melakukan generate data dengan tipe json dengan unique key berasal dari nama tiap variable css.
 
 Masing-masing unique key tersebut berisikan atribut seperti `id`, `css`, `type`, `label`, `group`, `sub-group`.
 
-- atribut `id` berfungsi sebagai id yang akan di set pada id input(color/number/text). pastikan value `id` sama dengan value `css` tanpa `--`.
+- atribut `id` berfungsi sebagai id yang akan di set pada id input(color/number/text). `id` akan secara otomatis dibuat berdasarkan nama variable css tanpa `"--"`.
 
-- atribut `css` berfungsi sebagai key untuk mengakses variable CSS agar dapat dilakukan modifikasi. pastikan value dari atribut `css` ini sama dengan yang ada di file `style.css` dan `css.js`.
+- atribut `css` berfungsi sebagai key untuk mengakses variable CSS agar dapat dilakukan modifikasi. `css` akan otomatis dibuat berdasarkan nama variable.
 
 - atribut `type` berfungsi untuk mendefinisikan tipe inputan untuk variabel tersebut. saat ini hanya terdapat 2 tipe inputan yaitu `colorPicker` dan `number`.
 
