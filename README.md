@@ -151,8 +151,7 @@ contoh isi file style.css
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
 
 :root {
-  /* chat */
-  /* owner/streamer */
+  /* owner */
   --owner-name-color: #000000;
   --owner-bg-name-color: #FFC774;
   --owner-message-color: #281E14;
@@ -162,8 +161,6 @@ contoh isi file style.css
 
 ...
 ```
-
-pastikan setiap nama variabel sama dengan yang digunakan pada file `field.json`
 
 3. Isi file `css.js` pada `./config/data/css.js` dengan CSS hasil customize.
 
@@ -175,8 +172,7 @@ var styleChat =
     `@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
     :root {
-    /* chat */
-    /* owner/streamer */
+    /* owner */
     --owner-name-color: #ffffff;
     --owner-bg-name-color: #645D5A;
     --owner-message-color: #1F1B1C;
@@ -186,7 +182,7 @@ var styleChat =
 ...
 ```
 
-pastikan setiap nama variabel sama dengan yang ada pada file `style.css` dan `field.json`
+pastikan setiap nama variabel sama dengan yang ada pada file `style.css`
 
 
 4. Pada file app.html terdapat internal javascript pada bagian bawah.
