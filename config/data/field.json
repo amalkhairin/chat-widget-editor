@@ -1,0 +1,374 @@
+{
+    "nameFontSize": {
+        "id": "name-font-size",
+        "css": "--name-font-size",
+        "type": "number",
+        "label": "Name Font Size",
+        "group": "Chat Settings",
+        "sub-group": "none"
+    },
+    "messageFontSize": {
+        "id": "message-font-size",
+        "css": "--message-font-size",
+        "type": "number",
+        "label": "Message Font Size",
+        "group": "Chat Settings",
+        "sub-group": "none"
+    },
+
+    "ownerNameColor": {
+        "id": "owner-name-color",
+        "css": "--owner-name-color",
+        "type": "colorPicker",
+        "label": "Name Color",
+        "group": "Chat Settings",
+        "sub-group": "Streamer"
+    },
+    "ownerBGNameColor": {
+        "id": "owner-bg-name-color",
+        "css": "--owner-bg-name-color",
+        "type": "colorPicker",
+        "label": "Background Name Color",
+        "group": "Chat Settings",
+        "sub-group": "Streamer"
+    },
+    "ownerMessageColor": {
+        "id": "owner-message-color",
+        "css": "--owner-message-color",
+        "type": "colorPicker",
+        "label": "Message Color",
+        "group": "Chat Settings",
+        "sub-group": "Streamer"
+    },
+    "ownerBGMessageColor": {
+        "id": "owner-bg-message-color",
+        "css": "--owner-bg-message-color",
+        "type": "colorPicker",
+        "label": "Background Message Color",
+        "group": "Chat Settings",
+        "sub-group": "Streamer"
+    },
+    "ownerBottomShadowColor": {
+        "id": "owner-bottom-shadow-color",
+        "css": "--owner-bottom-shadow-color",
+        "type": "colorPicker",
+        "label": "Bottom Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "Streamer"
+    },
+    "ownerShadowColor": {
+        "id": "owner-shadow-color",
+        "css": "--owner-shadow-color",
+        "type": "colorPicker",
+        "label": "Drop Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "Streamer"
+    },
+
+    
+    "moderatorNameColor": {
+        "id": "moderator-name-color",
+        "css": "--moderator-name-color",
+        "type": "colorPicker",
+        "label": "Name Color",
+        "group": "Chat Settings",
+        "sub-group": "Moderator"
+    },
+    "moderatorBGNameColor": {
+        "id": "moderator-bg-name-color",
+        "css": "--moderator-bg-name-color",
+        "type": "colorPicker",
+        "label": "Background Name Color",
+        "group": "Chat Settings",
+        "sub-group": "Moderator"
+    },
+    "moderatorMessageColor": {
+        "id": "moderator-message-color",
+        "css": "--moderator-message-color",
+        "type": "colorPicker",
+        "label": "Message Color",
+        "group": "Chat Settings",
+        "sub-group": "Moderator"
+    },
+    "moderatorBGMessageColor": {
+        "id": "moderator-bg-message-color",
+        "css": "--moderator-bg-message-color",
+        "type": "colorPicker",
+        "label": "Background Message Color",
+        "group": "Chat Settings",
+        "sub-group": "Moderator"
+    },
+    "moderatorBottomShadowColor": {
+        "id": "moderator-bottom-shadow-color",
+        "css": "--moderator-bottom-shadow-color",
+        "type": "colorPicker",
+        "label": "Bottom Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "Moderator"
+    },
+    "moderatorShadowColor": {
+        "id": "moderator-shadow-color",
+        "css": "--moderator-shadow-color",
+        "type": "colorPicker",
+        "label": "Drop Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "Moderator"
+    },
+
+    
+    "memberNameColor": {
+        "id": "member-name-color",
+        "css": "--member-name-color",
+        "type": "colorPicker",
+        "label": "Name Color",
+        "group": "Chat Settings",
+        "sub-group": "Member"
+    },
+    "memberBGNameColor": {
+        "id": "member-bg-name-color",
+        "css": "--member-bg-name-color",
+        "type": "colorPicker",
+        "label": "Background Name Color",
+        "group": "Chat Settings",
+        "sub-group": "Member"
+    },
+    "memberMessageColor": {
+        "id": "member-message-color",
+        "css": "--member-message-color",
+        "type": "colorPicker",
+        "label": "Message Color",
+        "group": "Chat Settings",
+        "sub-group": "Member"
+    },
+    "memberBGMessageColor": {
+        "id": "member-bg-message-color",
+        "css": "--member-bg-message-color",
+        "type": "colorPicker",
+        "label": "Background Message Color",
+        "group": "Chat Settings",
+        "sub-group": "Member"
+    },
+    "memberBottomShadowColor": {
+        "id": "member-bottom-shadow-color",
+        "css": "--member-bottom-shadow-color",
+        "type": "colorPicker",
+        "label": "Bottom Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "Member"
+    },
+    "memberShadowColor": {
+        "id": "member-shadow-color",
+        "css": "--member-shadow-color",
+        "type": "colorPicker",
+        "label": "Drop Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "Member"
+    },
+
+    
+    "generalNameColor": {
+        "id": "general-name-color",
+        "css": "--general-name-color",
+        "type": "colorPicker",
+        "label": "Name Color",
+        "group": "Chat Settings",
+        "sub-group": "General"
+    },
+    "generalBGNameColor": {
+        "id": "general-bg-name-color",
+        "css": "--general-bg-name-color",
+        "type": "colorPicker",
+        "label": "Background Name Color",
+        "group": "Chat Settings",
+        "sub-group": "General"
+    },
+    "generalMessageColor": {
+        "id": "general-message-color",
+        "css": "--general-message-color",
+        "type": "colorPicker",
+        "label": "Message Color",
+        "group": "Chat Settings",
+        "sub-group": "General"
+    },
+    "generalBGMessageColor": {
+        "id": "general-bg-message-color",
+        "css": "--general-bg-message-color",
+        "type": "colorPicker",
+        "label": "Background Message Color",
+        "group": "Chat Settings",
+        "sub-group": "General"
+    },
+    "generalBottomShadowColor": {
+        "id": "general-bottom-shadow-color",
+        "css": "--general-bottom-shadow-color",
+        "type": "colorPicker",
+        "label": "Bottom Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "General"
+    },
+    "generalShadowColor": {
+        "id": "general-shadow-color",
+        "css": "--general-shadow-color",
+        "type": "colorPicker",
+        "label": "Drop Shadow Color",
+        "group": "Chat Settings",
+        "sub-group": "General"
+    },
+
+
+    "membershipNameFontSize": {
+        "id": "membership-name-font-size",
+        "css": "--membership-name-font-size",
+        "type": "number",
+        "label": "Name Font Size",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipSubtextFontSize": {
+        "id": "membership-subtext-font-size",
+        "css": "--membership-subtext-font-size",
+        "type": "number",
+        "label": "Sub-text Font Size",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipOtherFontSize": {
+        "id": "membership-other-font-size",
+        "css": "--membership-other-font-size",
+        "type": "number",
+        "label": "Other-text Font Size",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipMessageFontSize": {
+        "id": "membership-message-font-size",
+        "css": "--membership-message-font-size",
+        "type": "number",
+        "label": "Message Font Size",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipNameColor": {
+        "id": "membership-name-color",
+        "css": "--membership-name-color",
+        "type": "colorPicker",
+        "label": "Name Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipSubtextColor": {
+        "id": "membership-subtext-color",
+        "css": "--membership-subtext-color",
+        "type": "colorPicker",
+        "label": "Sub-text Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipOtherColor": {
+        "id": "membership-other-color",
+        "css": "--membership-other-color",
+        "type": "colorPicker",
+        "label": "Other-text Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipMessageColor": {
+        "id": "membership-message-color",
+        "css": "--membership-message-color",
+        "type": "colorPicker",
+        "label": "Message Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipBGColor": {
+        "id": "membership-bg-color",
+        "css": "--membership-bg-color",
+        "type": "colorPicker",
+        "label": "Background Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipBGNameColor": {
+        "id": "membership-bg-name-color",
+        "css": "--membership-bg-name-color",
+        "type": "colorPicker",
+        "label": "Background Name Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipBottomShadowColor": {
+        "id": "membership-bottom-shadow-color",
+        "css": "--membership-bottom-shadow-color",
+        "type": "colorPicker",
+        "label": "Bottom Shadow Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+    "membershipShadowColor": {
+        "id": "membership-shadow-color",
+        "css": "--membership-shadow-color",
+        "type": "colorPicker",
+        "label": "Drop Shadow Color",
+        "group": "Membership Settings",
+        "sub-group": "none"
+    },
+
+
+    "scNameFontSize": {
+        "id": "sc-name-font-size",
+        "css": "--sc-name-font-size",
+        "type": "number",
+        "label": "Name Font Size",
+        "group": "Superchat Settings",
+        "sub-group": "none"
+    },
+    "scAmountFontSize": {
+        "id": "sc-amount-font-size",
+        "css": "--sc-amount-font-size",
+        "type": "number",
+        "label": "Amount Font Size",
+        "group": "Superchat Settings",
+        "sub-group": "none"
+    },
+    "scMessageFontSize": {
+        "id": "sc-message-font-size",
+        "css": "--sc-message-font-size",
+        "type": "number",
+        "label": "Message Font Size",
+        "group": "Superchat Settings",
+        "sub-group": "none"
+    },
+    "scNameColor": {
+        "id": "sc-name-color",
+        "css": "--sc-name-color",
+        "type": "colorPicker",
+        "label": "Name Color",
+        "group": "Superchat Settings",
+        "sub-group": "none"
+    },
+    "scAmountColor": {
+        "id": "sc-amount-color",
+        "css": "--sc-amount-color",
+        "type": "colorPicker",
+        "label": "Amount Color",
+        "group": "Superchat Settings",
+        "sub-group": "none"
+    },
+    "scMessageColor": {
+        "id": "sc-message-color",
+        "css": "--sc-message-color",
+        "type": "colorPicker",
+        "label": "Message Color",
+        "group": "Superchat Settings",
+        "sub-group": "none"
+    },
+    "scBGColor": {
+        "id": "sc-bg-color",
+        "css": "--sc-bg-color",
+        "type": "colorPicker",
+        "label": "Background Color",
+        "group": "Superchat Settings",
+        "sub-group": "none"
+    }
+
+}
