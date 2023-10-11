@@ -72,10 +72,10 @@ contoh:
   /* end-membership */
 
   /* sc */
-  --font-color-sc: #281E14;
-  --background-sc: #FFE9DD;
-  --bottom-shadow-color-sc: #D19B7D;
-  --shadow-color-sc: #FFE9DD;
+  --sc-name-color: #281E14;
+  --sc-background-color: #FFE9DD;
+  --sc-bottom-shadow-color: #D19B7D;
+  --sc-shadow-color: #FFE9DD;
   /* end-sc */
 
   /* chat-font-size */
