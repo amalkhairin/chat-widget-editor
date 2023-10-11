@@ -12,8 +12,8 @@
 
 ## Setup
 #### 1. Atur variable CSS yang sudah di customize agar memiliki identifier untuk masing-masing bagian.
-Pisahkan perbagian seperto `owner/streamer`, `moderator`, `member`, dan seterusnya.
-penamaan perbagian menguti rules:
+Pisahkan perbagian seperti `owner/streamer`, `moderator`, `member`, dan seterusnya.
+penamaan perbagian mengikuti rules:
 - owner (untuk Streamer atau Channel Owner)
 - moderator (untuk Moderator)
 - member (untuk Member)
