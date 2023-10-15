@@ -12,8 +12,8 @@
 
 ## Setup
 #### 1. Atur variable CSS yang sudah di customize agar memiliki identifier untuk masing-masing bagian.
-Pisahkan perbagian seperto `owner/streamer`, `moderator`, `member`, dan seterusnya.
-penamaan perbagian menguti rules:
+Pisahkan perbagian seperti `owner/streamer`, `moderator`, `member`, dan seterusnya.
+penamaan perbagian mengikuti rules `/* part */` `/* end-part */` :
 - owner (untuk Streamer atau Channel Owner)
 - moderator (untuk Moderator)
 - member (untuk Member)
@@ -72,10 +72,10 @@ contoh:
   /* end-membership */
 
   /* sc */
-  --font-color-sc: #281E14;
-  --background-sc: #FFE9DD;
-  --bottom-shadow-color-sc: #D19B7D;
-  --shadow-color-sc: #FFE9DD;
+  --sc-name-color: #281E14;
+  --sc-background-color: #FFE9DD;
+  --sc-bottom-shadow-color: #D19B7D;
+  --sc-shadow-color: #FFE9DD;
   /* end-sc */
 
   /* chat-font-size */
