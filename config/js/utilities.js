@@ -163,12 +163,14 @@ function onEventShow(fields) {
 
     $.each(groupLists, function(key, value){
         $("#flush-heading"+key.split(' ').join('')).click(function(){
-            $(".widget-wrapper").empty()
             if(key.split(' ').join('') === 'ChatSettings') {
+                $(".widget-wrapper").empty()
                 showChat(".widget-wrapper");
             } else if (key.split(' ').join('') === 'MembershipSettings') {
+                $(".widget-wrapper").empty()
                 showMembership(".widget-wrapper");
             } else if (key.split(' ').join('') === 'SuperchatSettings') {
+                $(".widget-wrapper").empty()
                 showSuperchat(".widget-wrapper");
             }
         })
