@@ -162,14 +162,14 @@ function onEventShow(fields) {
     });
 
     $.each(groupLists, function(key, value){
-        $("#trigger-"+key.split(' ').join('')).click(function(){
-            $("#widget-wrapper").empty()
+        $("#flush-heading"+key.split(' ').join('')).click(function(){
+            $(".widget-wrapper").empty()
             if(key.split(' ').join('') === 'ChatSettings') {
-                showChat("#widget-wrapper");
+                showChat(".widget-wrapper");
             } else if (key.split(' ').join('') === 'MembershipSettings') {
-                showMembership("#widget-wrapper");
+                showMembership(".widget-wrapper");
             } else if (key.split(' ').join('') === 'SuperchatSettings') {
-                showSuperchat("#widget-wrapper");
+                showSuperchat(".widget-wrapper");
             }
         })
     })
@@ -627,7 +627,7 @@ function showChat(selector){
 function showSuperchat(selector){
     $(selector).append(`
     <!-- SC new -->
-    <yt-live-chat-paid-message-renderer class="style-scope yt-live-chat-item-list-renderer" whole-message-clickable="" modern="" id="ChwKGkNOUG9ub3I0MllFREZiM0R3Z1FkUVNJSkJR" show-only-header="" is-v2-style="" allow-animations="" style="--yt-live-chat-paid-message-primary-color: rgba(30,136,229,1); --yt-live-chat-paid-message-secondary-color: rgba(21,101,192,1); --yt-live-chat-paid-message-header-color: rgba(255,255,255,1); --yt-live-chat-paid-message-timestamp-color: rgba(255,255,255,0.5019607843137255); --yt-live-chat-paid-message-color: rgba(255,255,255,1); --yt-live-chat-disable-highlight-message-author-name-color: rgba(255,255,255,0.7019607843137254); --yt-live-chat-text-input-background-color: rgba(0,0,0,0.18823529411764706);">
+    <yt-live-chat-paid-message-renderer class="style-scope yt-live-chat-item-list-renderer" modern="" id="ChwKGkNOUG9ub3I0MllFREZiM0R3Z1FkUVNJSkJR" show-only-header="" is-v2-style="" allow-animations="" style="--yt-live-chat-paid-message-primary-color: rgba(30,136,229,1); --yt-live-chat-paid-message-secondary-color: rgba(21,101,192,1); --yt-live-chat-paid-message-header-color: rgba(255,255,255,1); --yt-live-chat-paid-message-timestamp-color: rgba(255,255,255,0.5019607843137255); --yt-live-chat-paid-message-color: rgba(255,255,255,1); --yt-live-chat-disable-highlight-message-author-name-color: rgba(255,255,255,0.7019607843137254); --yt-live-chat-text-input-background-color: rgba(0,0,0,0.18823529411764706);">
         <div id="card" class="style-scope yt-live-chat-paid-message-renderer">
             <div id="header" class="style-scope yt-live-chat-paid-message-renderer">
                 <yt-img-shadow id="author-photo" class="style-scope yt-live-chat-paid-message-renderer no-transition" style="background-color: transparent;" loaded="">
@@ -704,7 +704,7 @@ function showSuperchat(selector){
     </yt-live-chat-paid-message-renderer>
     <!-- end SC new -->
     <!-- new SC 2 -->
-    <yt-live-chat-paid-message-renderer class="style-scope yt-live-chat-item-list-renderer" whole-message-clickable="" modern="" id="ChwKGkNQZlZ3cDM0MllFREZaa0RyUVlkZW1RUDBn" is-v2-style="" allow-animations="" style="--yt-live-chat-paid-message-primary-color: rgba(0,229,255,1); --yt-live-chat-paid-message-secondary-color: rgba(0,184,212,1); --yt-live-chat-paid-message-header-color: rgba(0,0,0,1); --yt-live-chat-paid-message-timestamp-color: rgba(0,0,0,0.5019607843137255); --yt-live-chat-paid-message-color: rgba(0,0,0,1); --yt-live-chat-disable-highlight-message-author-name-color: rgba(0,0,0,0.7019607843137254); --yt-live-chat-text-input-background-color: rgba(255,255,255,0.18823529411764706);">
+    <yt-live-chat-paid-message-renderer class="style-scope yt-live-chat-item-list-renderer" modern="" id="ChwKGkNQZlZ3cDM0MllFREZaa0RyUVlkZW1RUDBn" is-v2-style="" allow-animations="" style="--yt-live-chat-paid-message-primary-color: rgba(0,229,255,1); --yt-live-chat-paid-message-secondary-color: rgba(0,184,212,1); --yt-live-chat-paid-message-header-color: rgba(0,0,0,1); --yt-live-chat-paid-message-timestamp-color: rgba(0,0,0,0.5019607843137255); --yt-live-chat-paid-message-color: rgba(0,0,0,1); --yt-live-chat-disable-highlight-message-author-name-color: rgba(0,0,0,0.7019607843137254); --yt-live-chat-text-input-background-color: rgba(255,255,255,0.18823529411764706);">
         <div id="card" class="style-scope yt-live-chat-paid-message-renderer">
             <div id="header" class="style-scope yt-live-chat-paid-message-renderer">
                 <yt-img-shadow id="author-photo" class="style-scope yt-live-chat-paid-message-renderer no-transition" style="background-color: transparent;" loaded="">
@@ -939,7 +939,7 @@ function showMembership(selector){
     <!-- end member 2 -->
     <!-- gift -->
     <ytd-sponsorships-live-chat-gift-purchase-announcement-renderer class="style-scope yt-live-chat-item-list-renderer">
-        <ytd-sponsorships-live-chat-header-renderer id="header" class="style-scope ytd-sponsorships-live-chat-gift-purchase-announcement-renderer" whole-message-clickable="">
+        <ytd-sponsorships-live-chat-header-renderer id="header" class="style-scope ytd-sponsorships-live-chat-gift-purchase-announcement-renderer">
             <div id="header" class="style-scope ytd-sponsorships-live-chat-header-renderer">
                 <div id="content" class="style-scope ytd-sponsorships-live-chat-header-renderer">
                     <yt-img-shadow id="author-photo" height="40" width="40" class="style-scope ytd-sponsorships-live-chat-header-renderer no-transition" style="background-color: transparent;" loaded="">
@@ -999,6 +999,7 @@ function showMembership(selector){
 
 function generateMenu(fields) {
     var groupLists = {};
+    $("#parentMenu").empty()
 
     $.each(fields, function(key, value) {
         var group = value.group;
@@ -1012,27 +1013,38 @@ function generateMenu(fields) {
 
     $.each(groupLists, function(key, items) {
         id = key.split(' ').join('');
-        
-        $("#toolbar-item").append(`
-            <div class="accordion-item border-none rounded-3 mb-3">
-                <div id="trigger-${id}">
-                    <h2 class="accordion-header" id="flush-menu${id}">
-                        <button class="accordion-button rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseMenu${id}" aria-expanded="false" aria-controls="flush-collapseMenu${id}">
-                            <div class="header-3 fw-bold text-black-50">${key}</div>
-                        </button>
-                    </h2>
-                </div>
-                <div id="flush-collapseMenu${id}" class="accordion-collapse collapse" aria-labelledby="flush-menu${id}" data-bs-parent="#toolbar-item">
-                    <div class="accordion-body py-1">
-                        <div class="row">
-                            <div class="col" id="item-widget-${id}">
-                                
-                            </div>
-                        </div>
+
+        $("#parentMenu").append(`
+            <!-- accordion item -->
+            <div class="rounded-none">
+                <!-- heading accordion -->
+                <h2 class="mb-0" id="flush-heading${id}">
+                    <button
+                        class="group relative flex w-full items-center rounded-none border-0 bg-white px-1 py-4 text-right text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary  dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
+                        type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#flush-collapse${id}"
+                        aria-expanded="false" aria-controls="flush-collapse${id}">
+                        <span
+                            class="-ml-0 mr-3 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#212529] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:ml-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-[#212529] dark:group-[[data-te-collapse-collapsed]]:fill-[#212529]">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="#212529" class="h-5 w-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </span>
+                        <span class="text-gray-600 text-sm font-bold">${key}</span>
+                    </button>
+                </h2>
+                <!-- end heading -->
+                <!-- content -->
+                <div id="flush-collapse${id}" class="!visible hidden border-0" data-te-collapse-item
+                    aria-labelledby="flush-heading${id}" data-te-parent="#parentMenu">
+                    <div id="item-widget-${id}" class="px-5 py-2 text-xs">
+                        
                     </div>
                 </div>
+                <!-- end content -->
             </div>
-        `);
+            <!-- end accordion item -->
+        `)
 
         var subGroupList = []
 
@@ -1041,51 +1053,58 @@ function generateMenu(fields) {
             if(item['sub-group'] !== 'none') {
                 if(subGroupList.indexOf(item['sub-group']) === -1) {
                     $("#item-widget-"+id).append(`
-                    <div class="accordion accordion-flush" id="toolbar-sub-item-${item['sub-group']}">
-                        <div class="accordion-item border-none rounded-3 mb-3">
-                            <h2 class="accordion-header" id="flush-heading${item['sub-group']}">
-                                <button class="accordion-button rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseMenu${item['sub-group']}" aria-expanded="false" aria-controls="flush-collapseMenu${item['sub-group']}">
-                                    <div class="header-3 fw-bold text-black-50">${item['sub-group']}</div>
+                    <div id="child-menu-${item['sub-group']}">
+                        <!-- accordion item -->
+                        <div class="rounded-none">
+                            <!-- heading accordion -->
+                            <h2 class="mb-0" id="flush-heading${item['sub-group']}">
+                                <button
+                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-1 py-4 text-right text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary  dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
+                                    type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#flush-collapse${item['sub-group']}"
+                                    aria-expanded="false" aria-controls="flush-collapse${item['sub-group']}">
+                                    <span
+                                        class="-ml-0 mr-3 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#212529] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:ml-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-[#212529] dark:group-[[data-te-collapse-collapsed]]:fill-[#212529]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="#212529" class="h-5 w-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-600 text-sm font-bold">${item['sub-group']}</span>
                                 </button>
                             </h2>
-                            <div id="flush-collapseMenu${item['sub-group']}" class="accordion-collapse collapse" aria-labelledby="flush-heading${item['sub-group']}" data-bs-parent="#toolbar-sub-item-${item['sub-group']}">
-                                <div class="accordion-body py-1">
-                                    <div class="row">
-                                        <div class="col" id="item-widget-${item['sub-group']}">
-                                            
-                                        </div>
-                                    </div>
+                            <!-- end heading -->
+                            <!-- content -->
+                            <div id="flush-collapse${item['sub-group']}" class="!visible hidden border-0" data-te-collapse-item
+                                aria-labelledby="flush-heading${item['sub-group']}" data-te-parent="#child-menu-${item['sub-group']}">
+                                <div id="item-widget-${item['sub-group']}" class="px-5 py-2 text-xs">
+                                    
                                 </div>
                             </div>
+                            <!-- end content -->
                         </div>
+                        <!-- end accordion item -->
                     </div>
-                    `);
+                    `)
 
                     subGroupList.push(item['sub-group']);
                 }
 
                 if (item.type === 'colorPicker') {
                     $("#item-widget-"+item['sub-group']).append(`
-                        <div clas="mt-2">
-                            <label class="p-2">${item.label}</label>
-                            <div class="row g-1 m-0">
-                                <div class="col-auto align-items-center">
-                                    <input class="custom-input-color-2 ${item.id}" type="color" value="#000000" name="${item.id}">
-                                </div>
-                                <div class="col align-items-center">
-                                    <input class="custom-input-text ${item.id}" type="text" name="${item.id}">
-                                </div>
+                        <div class="pb-2">
+                            <label class="pl-0">${item.label}</label>
+                            <div class="input-container py-3 flex flex-row">
+                                <input class="custom-input-color-2 ${item.id}" type="color" value="#000000" name="${item.id}">
+                                <input class="ml-2 custom-input-text ${item.id}" type="text" name="${item.id}">
                             </div>
                         </div>
                     `)
                 } else if(item.type === 'number') {
                     $("#item-widget-"+item['sub-group']).append(`
-                        <div clas="mt-2">
-                            <label class="p-2">${item.label}</label>
-                            <div class="row g-1 m-0">
-                                <div class="col align-items-center">
-                                    <input class="custom-input-text ${item.id}" id="${item.id}" type="number" name="${item.id}">
-                                </div>
+                        <div class="pb-2">
+                            <label class="pl-0">${item.label}</label>
+                            <div class="input-container py-3">
+                                <input class="custom-input-text ${item.id}" id="${item.id}" type="number" name="${item.id}">
                             </div>
                         </div>
                     `)
@@ -1095,26 +1114,20 @@ function generateMenu(fields) {
             } else {
                 if (item.type === 'colorPicker') {
                     $("#item-widget-"+id).append(`
-                        <div clas="mt-2">
-                            <label class="p-2">${item.label}</label>
-                            <div class="row g-1 m-0">
-                                <div class="col-auto align-items-center">
-                                    <input class="custom-input-color-2 ${item.id}" type="color" value="#000000" name="${item.id}">
-                                </div>
-                                <div class="col align-items-center">
-                                    <input class="custom-input-text ${item.id}" type="text" name="${item.id}">
-                                </div>
+                        <div class="pb-2">
+                            <label class="pl-0">${item.label}</label>
+                            <div class="input-container py-2 flex flex-row">
+                                <input class="custom-input-color-2 ${item.id}" type="color" value="#000000" name="${item.id}">
+                                <input class="ml-2 custom-input-text ${item.id}" type="text" name="${item.id}">
                             </div>
                         </div>
                     `)
                 } else if(item.type === 'number') {
                     $("#item-widget-"+id).append(`
-                        <div clas="mt-2">
-                            <label class="p-2">${item.label}</label>
-                            <div class="row g-1 m-0">
-                                <div class="col align-items-center">
-                                    <input class="custom-input-text ${item.id}" id="${item.id}" type="number" name="${item.id}">
-                                </div>
+                        <div class="pb-2">
+                            <label class="pl-0">${item.label}</label>
+                            <div class="input-container py-2">
+                                <input class="custom-input-text ${item.id}" id="${item.id}" type="number" name="${item.id}">
                             </div>
                         </div>
                     `)

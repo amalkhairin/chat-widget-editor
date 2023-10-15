@@ -1,105 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Widget Editor</title>
-    <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script src="./config/js/tailwind.config.js"></script>
     <!-- external css -->
     <link rel="stylesheet" href="./config/css/main.css">
     <link rel="stylesheet" href="./config/css/main.style.css">
     <link rel="stylesheet" href="./config/css/style.css">
 </head>
-<body style="overflow: hidden;">
-    <div id="loading-screen" style="width: 100vw; height: 100vh; position: absolute; background: #00000090; z-index: 99;">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="row row-cols-1 my-auto justify-content-center align-items-center">
-            <div class="col-auto">
-                <div class="square-circle-5"></div>
-            </div>
-            <div class="col mt-4 text-center">
-                <span class="text-center text-white">Memperbarui data...</span> <br>
-                <span class="text-white">Jangan khawatir, ini tidak seperti menunggu doi selesai makeup</span>
-            </div>
-        </div>
-    </div>
 
-    <section id="section-navbar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid px-4">
-                <div class="navbar-brand">Chat Widget Editor v3.0 <span style="font-size: 10px; color: #979797;">by Maruマル</span></div>
-                <div class="d-flex justify-content-end">
-                    <div class="ms-auto">
-                        <div class="row">
-                            <div class="col-auto">
-                                <div class="rounded-1 px-2 py-1 d-flex align-items-center" style="color: #8e8e8e; border: 1px solid #484848;">
-                                    <span class="me-2">Background</span>
-                                    <div class="color-picker">
-                                        <input type="color" class="custom-input-color" id="editor-bg-color" value="#ffffff" title="Background">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-auto px-1">
-                                <button id="btn-generate" class="btn btn-primary shadow-none pb-2" data-bs-placement="bottom" title="Generate CSS" data-bs-toggle="modal" data-bs-target="#myModal">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><style>svg{fill:#ffffff}</style><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>
-                                </button>
-                            </div>
-                            <div class="col-auto px-1">
-                                <button id="btn-reset" class="btn btn-danger shadow-none pb-2" data-bs-placement="bottom" title="Reset CSS">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><style>svg{fill:#ffffff}</style><path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z"/></svg>
-                                </button>
-                            </div>
+<body>
+    <section id="navbar">
+        <nav class="border-0 bg-gray-800">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-5 py-2">
+                <div class="flex items-center">
+                    <span class="self-center text-xl font-semibold whitespace-nowrap text-white">
+                        Chat Widget Editor v3.0 <span style="font-size: 10px; color: #979797;">by Maruマル</span>
+                    </span>
+                </div>
+                <div class="flex flex-row">
+                    <div class="border border-gray-500 rounded flex flex-row p-2 items-center">
+                        <span class="mr-2 leading-none text-gray-500">Background</span>
+                        <div class="color-picker">
+                            <input type="color" class="custom-input-color flex self-center" id="editor-bg-color" value="#ffffff" title="Background">
                         </div>
                     </div>
+                    <button id="btn-generate" type="button" data-te-ripple-init data-te-ripple-color="light"
+                        data-te-toggle="modal"
+                        data-te-target="#exampleModalXl"
+                        class="ml-2 inline-block rounded bg-primary px-4 py-2 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-700 focus:bg-primary-700 focus:outline-none focus:ring-0 active:bg-primary-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><style>svg{fill:#ffffff}</style><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>
+                    </button>
+                    <button id="btn-reset" type="button" data-te-ripple-init data-te-ripple-color="light"
+                        class="ml-2 inline-block rounded bg-danger px-4 py-2 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-danger-700 focus:bg-danger-700 focus:outline-none focus:ring-0 active:bg-danger-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><style>svg{fill:#ffffff}</style><path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z"/></svg>
+                    </button>
                 </div>
             </div>
         </nav>
     </section>
 
     <section id="main">
-        <div class="row m-0 align-items-start">
-            <!-- toolbar -->
-            <div id="toolbar" class="col-md-3 border">
-                <div class="mt-3 accordion accordion-flush" id="toolbar-item">
+        <div class="overflow-hidden">
+            <div class="grid grid-cols-4">
+                <div id="toolbar" class="col-span-1 p-4">
+                    <div id="parentMenu">
+                        <!-- accordion item -->
+                        <div class="rounded-none">
+                            <!-- heading accordion -->
+                            <h2 class="mb-0" id="flush-headingTwo">
+                                <button
+                                    class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-right text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary  dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
+                                    type="button" data-te-collapse-init data-te-collapse-collapsed data-te-target="#flush-collapseTwo"
+                                    aria-expanded="false" aria-controls="flush-collapseTwo">
+                                </button>
+                            </h2>
+                            <!-- end heading -->
+                        </div>
+                        <!-- end accordion item -->
+                    </div>
+                </div>
+                <div id="widget-container" class="col-span-3 p-4">
+                    <yt-live-chat-app>
+                        <div id="contents" class="style-scope yt-live-chat-app">
+                            <yt-live-chat-renderer class="style-scope yt-live-chat-app" hide-timestamps="" darker-dark-theme="" has-ticker="" has-input-action-panel="" style="--scrollbar-width: 17px;">
+                                <iron-pages id="content-pages" class="style-scope yt-live-chat-renderer">
+                                    <div id="chat-messages" class="style-scope yt-live-chat-renderer iron-selected">
+                                        <div id="contents" class="style-scope yt-live-chat-renderer">
+                                            <div id="chat" class="style-scope yt-live-chat-renderer">
+                                                <div id="item-list" class="style-scope yt-live-chat-renderer">
+                                                    <yt-live-chat-item-list-renderer class="style-scope yt-live-chat-renderer" allow-scroll="" id="live-chat-item-list-panel">
+                                                        <div id="contents" class="style-scope yt-live-chat-item-list-renderer">
+                                                            <div id="item-scroller" class="style-scope yt-live-chat-item-list-renderer animated">
+                                                                <div id="item-offset" class="style-scope yt-live-chat-item-list-renderer" style="height: 9722px; min-height: 393px;">
+                                                                    <div id="items" class="style-scope yt-live-chat-item-list-renderer widget-wrapper">
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </yt-live-chat-item-list-renderer>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </iron-pages>
+                            </yt-live-chat-renderer>
+                        </div>
+                    </yt-live-chat-app>
                 </div>
             </div>
-            <!-- end toolbar -->
-            <!-- widget -->
-            <div id="widget-container" class="col-md-9">
-                <yt-live-chat-item-list-renderer id="widget-wrapper" class="p-5 mt-3" allow-scroll style="overflow: scroll;"></yt-live-chat-item-list-renderer>
-            </div>
-            <!-- end widget -->
         </div>
     </section>
 
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content bg-dark" style="border-radius: 3px !important;">
-                <div class="modal-header border border-0">
-                    <h6 class="modal-title text-white" id="myModalLabel">Custom CSS</h6>
-                    <div class="row row-cols-1 justify-content-end ms-auto me-1">
-                        <div class="col-auto">
-                            <button id="btn-copy" class="btn btn-primary text-end shadow-none">Copy</button>
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        </div>
+    <!--Extra large modal-->
+    <div data-te-modal-init
+        class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-hidden overflow-x-hidden outline-none"
+        id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+        <div data-te-modal-dialog-ref
+            class="pointer-events-none relative flex min-h-[calc(100%-1rem)] items-center w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px] min-[992px]:max-w-[800px] min-[1200px]:max-w-[1140px]">
+            <div
+                class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-gray-800 bg-clip-padding text-current shadow-lg outline-none">
+                <div
+                    class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <!--Modal title-->
+                    <h5 class="text-xl font-medium leading-normal text-white"
+                        id="exampleModalXlLabel">
+                        Custom CSS
+                    </h5>
+                    <!--Close button-->
+                    <div class="flex flex-row justify-content-end">
+                        <button id="btn-copy" data-te-ripple-init data-te-ripple-color="primary"
+                            class="ml-2 inline-block rounded bg-primary px-4 py-2 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-700 focus:bg-primary-700 focus:outline-none focus:ring-0 active:bg-primary-700">
+                            Copy
+                        </button>
+                        <button id="btn-reset" type="button" data-te-ripple-init data-te-ripple-color="danger"
+                            data-te-modal-dismiss aria-label="Close"
+                            class="ml-2 box-content inline-block rounded border-danger px-2 py-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="h-3 w-3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <div class="modal-body">
-                    <div class="card shadow-none" style="max-height: 75vh; overflow: none; border: none; background: transparent;">
-                        <div class="card-body m-0">
-                            <textarea style="border: none; background: transparent !important; color: aquamarine !important;" class="form-control" id="spawner" rows="15" readonly></textarea>
-                        </div>
+
+                <!--Modal body-->
+                <div class="relative">
+                    <div class="h-[75vh] w-full p-5">
+                        <textarea style="border: none; background: transparent !important; color: aquamarine !important;" class="w-full" id="spawner" rows="15" readonly></textarea>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="./config/js/utilities.js"></script>
     <script src="./config/data/css.js"></script>
     <script>
@@ -127,8 +170,8 @@
 
             addEventTrigger(fields, uniqueId);
 
-            $("#widget-wrapper").empty();
-            showChat("#widget-wrapper");
+            $(".widget-wrapper").empty();
+            showChat(".widget-wrapper");
 
             loadData("#editor-bg-color", editorBGColor, uniqueId);
             loadWidgetData(fields, uniqueId)
@@ -177,4 +220,5 @@
         })
     </script>
 </body>
+
 </html>

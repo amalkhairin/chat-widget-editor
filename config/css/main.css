@@ -1,62 +1,14 @@
 :root {
-    --editor-bg-color: #9b9b9b;
+    --editor-bg-color: #222222;
 }
 
-.copy-text {
-    position: relative;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    display: flex;
-}
-.copy-text input.text {
-    padding: 10px;
-    font-size: 18px;
-    color: #555;
-    border: none;
-    outline: none;
-}
-.copy-text button {
-    padding: 10px;
-    background: #5784f5;
-    color: #fff;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    cursor: pointer;
+body {
+    overflow: hidden;
 }
 
-.copy-text button:active {
-    background: #809ce2;
-}
-.copy-text button:before {
-    content: "Copied";
-    position: absolute;
-    top: -45px;
-    right: 0px;
-    background: #5c81dc;
-    padding: 8px 10px;
-    border-radius: 20px;
-    font-size: 15px;
-    display: none;
-}
-.copy-text button:after {
-    content: "";
-    position: absolute;
-    top: -20px;
-    right: 25px;
-    width: 10px;
-    height: 10px;
-    background: #5c81dc;
-    transform: rotate(45deg);
-    display: none;
-}
-.copy-text.active button:before,
-.copy-text.active button:after {
-    display: block;
-}
+/* #toolbar * {
+    font-size: 11px;
+} */
 
 .square-circle-5 {
     width: 65px;
@@ -116,6 +68,30 @@
     }
 }
 
+input[type="color"].custom-input-color::-moz-color-swatch {
+  border: none;
+}
+
+input[type="color"].custom-input-color::-webkit-color-swatch-wrapper {
+  border-radius: 0;
+}
+
+input[type="color"].custom-input-color::-webkit-color-swatch {
+  border: none;
+}
+
+#toolbar {
+    border-right: 1px solid #d0d0d0;
+    height: calc(100vh - 55px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#widget-container {
+    height: calc(100vh - 55px);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 /* scrollbar */
 /* width */
 ::-webkit-scrollbar {
@@ -138,91 +114,20 @@
     background: #686868;
 }
 
-#toolbar * {
-    font-size: 11px;
-}
-
-.custom-input-color {
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-    border-radius: 100px;
-    background: transparent;
-    border: 1px solid #ffffff;
-}
-
-#toolbar {
-    height: calc(100vh - 55px);
-    overflow-y: scroll;
-}
-
-.navbar {
-    padding: 5px 10px !important;
-    width: 100% !important;
-    height: 55px !important;
-}
-
 #widget-container {
     background: var(--editor-bg-color);
-}
-
-.accordion * {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.accordion-button:focus {
-    background: transparent !important;
-}
-
-.accordion-button:not(.collapsed) {
-    background: transparent !important;
-    color: unset !important;
-}
-
-.accordion-button {
-    margin-left: 10px !important;
-}
-
-.accordion-button::after {
-    position: absolute !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    width: 12px !important;
-    height: 12px !important;
-    left: 0px !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-}
-
-.accordion-button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-    transform: translate(-50%, -50%) rotate(180deg) !important;
-}
-
-.header-3 {
-    font-size: 14px !important;
-}
-
-.header-2 {
-    font-size: 16px !important;
-}
-
-.header-1 {
-    font-size: 18px !important;
 }
 
 .custom-input-text {
     width: 100%;
     font-size: 14px;
+    font-weight: 400;
     text-align: left;
     letter-spacing: 0px;
     color: #323A47;
     padding-bottom: 5px;
     border: none !important;
     border-bottom: 1px solid #c5c5c5 !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
 }
 
 input[type="text"]:focus {
@@ -233,15 +138,26 @@ input[type="number"]:focus {
     outline: none !important;
 }
 
+.custom-input-color {
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    border-radius: 100px;
+    background: var(--editor-bg-color);
+    border: 1px solid #ffffff;
+}
+
 .custom-input-color-2 {
     width: 25px !important;
     height: 25px !important;
     box-shadow: 1px 1px 1px #323A47 !important;
 }
 
-#widget-wrapper {
-    width: 90% !important;
-    overflow-y: hidden !important;
-    transform: scale(0.6) !important;
+yt-live-chat-app {
+    width: auto !important;
+}
+
+#items.widget-wrapper {
+    transform: scale(0.7) !important;
     transform-origin: top !important;
 }
