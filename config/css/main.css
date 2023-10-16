@@ -158,6 +158,7 @@ yt-live-chat-app {
 }
 
 #items.widget-wrapper {
+    width: 50% !important;
     transform: scale(0.7) !important;
     transform-origin: top !important;
 }
