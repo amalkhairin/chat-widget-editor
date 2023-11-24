@@ -174,6 +174,7 @@ function onSVGChange(field) {
             // 'background-name' dapat disesuaikan dengan nama variabel pada css
             // '--owner-name-left' = nama variabel svg pada css
             if(field.id.includes("background-name")) {
+                // parameter key, identifier, initialValue, dan newValue
                 replaceSVGValue("--owner-name-left","background-name","FFCD40",capitalizeEachWord($(this).val().substring(1)))
             }
         }
