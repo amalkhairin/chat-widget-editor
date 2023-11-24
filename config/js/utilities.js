@@ -162,7 +162,7 @@ function replaceSVGValue(key, identifier, initialValue, newValue) {
 
 // setup untuk melakukan perubahan pada svg pada saat dilakukan input
 // field = inputan ketika terjadi perubahan
-function onSVGChange(field) {
+function onSVGChange(field, newVal) {
 
     // mengubah svg pada chat
     if(field['group'] === 'Chat Settings') {
@@ -175,23 +175,23 @@ function onSVGChange(field) {
             // '--owner-name-left' = nama variabel svg pada css
             if(field.id.includes("background-name")) {
                 // parameter key, identifier, initialValue, dan newValue
-                replaceSVGValue("--owner-name-left","background-name","FFCD40",capitalizeEachWord($(this).val().substring(1)))
+                replaceSVGValue("--owner-name-left","background-name","FFCD40",capitalizeEachWord(newVal.substring(1)))
             }
         }
 
         if(field['sub-group'] === 'Moderator') {
             if(field.id.includes("background-name")) {
-                replaceSVGValue("--moderator-name-left","background-name","C174DE",capitalizeEachWord($(this).val().substring(1)))
+                replaceSVGValue("--moderator-name-left","background-name","C174DE",capitalizeEachWord(newVal.substring(1)))
             }
         }
         if(field['sub-group'] === 'Member') {
             if(field.id.includes("background-name")) {
-                replaceSVGValue("--member-name-left","background-name","75C9B6",capitalizeEachWord($(this).val().substring(1)))
+                replaceSVGValue("--member-name-left","background-name","75C9B6",capitalizeEachWord(newVal.substring(1)))
             }
         }
         if(field['sub-group'] === 'General') {
             if(field.id.includes("background-name")) {
-                replaceSVGValue("--general-name-left","background-name","5654DB",capitalizeEachWord($(this).val().substring(1)))
+                replaceSVGValue("--general-name-left","background-name","5654DB",capitalizeEachWord(newVal.substring(1)))
             }
         }
     }
@@ -199,14 +199,14 @@ function onSVGChange(field) {
     // ini untuk svg pada membership alert
     if(field['group'] === 'Membership Settings') {
         if(field.id.includes("background-name")) {
-            replaceSVGValue("--membership-name-decoration","background-name","383695",capitalizeEachWord($(this).val().substring(1)))
+            replaceSVGValue("--membership-name-decoration","background-name","383695",capitalizeEachWord(newVal.substring(1)))
         }
     }
 
     // ini untuk svg pada superchat alert
     if(field['group'] === 'Superchat Settings') {
         if(field.id.includes("background-name")) {
-            replaceSVGValue("--sc-name-decoration","background-name","383695",capitalizeEachWord($(this).val().substring(1)))
+            replaceSVGValue("--sc-name-decoration","background-name","383695",capitalizeEachWord(newVal.substring(1)))
         }
     }
 }
@@ -227,7 +227,7 @@ function addEventTrigger(fields, identifier){
                 styleChat = replaceValue(styleChat, field.css, $(this).val())
 
                 // jika ingin merubah svg, panggil fungsi onSVGChange() pada baris dibawah
-                // onSVGChange(field)
+                // onSVGChange(field, $(this).val())
 
             })
         } else if (field.type === 'number') {
