@@ -122,6 +122,92 @@ function loadWidgetData(fields, identifier) {
             loadDataNumber("."+field.id, field.css, identifier)
         }
     })
+
+    // jika mengubah warna svg, panggil fungsi loadSVGData dibaris dibawah ini
+    // loadSVGData("--nama-variabel-svg","nama-variabel-warna","FFCD40");
+}
+
+
+// mengambil data svg dari local storage
+// key = nama variabel css/svg
+// identifier = nama variabel yang akan memicu trigger perubahan warna (tanpa --)
+// initialValue = nilai awal dari warna svg
+function loadSVGData(key, identifier, initialValue) {
+    savedVal = localStorage.getItem(key+identifier);
+    originalColor = initialValue;
+    var decoration = docStyleGetter.getPropertyValue(key).trim();
+    decoration = decoration.replaceAll(new RegExp(originalColor, 'g'), savedVal ?? initialValue);
+    styleChat = replaceValue(styleChat, key, decoration);
+
+    docStyle.setProperty(key, decoration);
+}
+
+
+// mengubah data svg
+// key = nama variabel css/svg
+// identifier = nama variabel yang akan memicu trigger perubahan warna (tanpa --)
+// initialValue = nilai awal dari warna svg
+// newValue = warna baru
+function replaceSVGValue(key, identifier, initialValue, newValue) {
+    var savedVal = localStorage.getItem(key+identifier);
+    var originalColor = savedVal ?? initialValue;
+    var decoration = docStyleGetter.getPropertyValue(key).trim();
+    decoration = decoration.replaceAll(new RegExp(originalColor, 'g'), newValue);
+    localStorage.setItem(key+identifier, newValue);
+
+    styleChat = replaceValue(styleChat, key, decoration);
+    docStyle.setProperty(key, decoration);
+}
+
+
+// setup untuk melakukan perubahan pada svg pada saat dilakukan input
+// field = inputan ketika terjadi perubahan
+function onSVGChange(field) {
+
+    // mengubah svg pada chat
+    if(field['group'] === 'Chat Settings') {
+
+        // check role
+        if(field['sub-group'] === 'Streamer') {
+
+            // contoh jika ingin mengubah warna svg tertentu ketika background-name diubah
+            // 'background-name' dapat disesuaikan dengan nama variabel pada css
+            // '--owner-name-left' = nama variabel svg pada css
+            if(field.id.includes("background-name")) {
+                replaceSVGValue("--owner-name-left","background-name","FFCD40",capitalizeEachWord($(this).val().substring(1)))
+            }
+        }
+
+        if(field['sub-group'] === 'Moderator') {
+            if(field.id.includes("background-name")) {
+                replaceSVGValue("--moderator-name-left","background-name","C174DE",capitalizeEachWord($(this).val().substring(1)))
+            }
+        }
+        if(field['sub-group'] === 'Member') {
+            if(field.id.includes("background-name")) {
+                replaceSVGValue("--member-name-left","background-name","75C9B6",capitalizeEachWord($(this).val().substring(1)))
+            }
+        }
+        if(field['sub-group'] === 'General') {
+            if(field.id.includes("background-name")) {
+                replaceSVGValue("--general-name-left","background-name","5654DB",capitalizeEachWord($(this).val().substring(1)))
+            }
+        }
+    }
+
+    // ini untuk svg pada membership alert
+    if(field['group'] === 'Membership Settings') {
+        if(field.id.includes("background-name")) {
+            replaceSVGValue("--membership-name-decoration","background-name","383695",capitalizeEachWord($(this).val().substring(1)))
+        }
+    }
+
+    // ini untuk svg pada superchat alert
+    if(field['group'] === 'Superchat Settings') {
+        if(field.id.includes("background-name")) {
+            replaceSVGValue("--sc-name-decoration","background-name","383695",capitalizeEachWord($(this).val().substring(1)))
+        }
+    }
 }
 
 function replaceValue(data, variableName, newValue) {
@@ -132,11 +218,16 @@ function replaceValue(data, variableName, newValue) {
 function addEventTrigger(fields, identifier){
     $.each(fields, function(key, field) {
         if (field.type === 'colorPicker') {
-            $("."+field.id).on('input', function(){
+            // update: mengubah 'input' ke 'change' untuk menghindari lagging saat merubah warna svg
+            $("."+field.id).on('change', function(){
                 docStyle.setProperty(field.css, $(this).val());
                 localStorage.setItem(identifier+field.css, $(this).val());
                 $("."+field.id).val($(this).val())
                 styleChat = replaceValue(styleChat, field.css, $(this).val())
+
+                // jika ingin merubah svg, panggil fungsi onSVGChange() pada baris dibawah
+                // onSVGChange(field)
+
             })
         } else if (field.type === 'number') {
             $("#"+field.id).on('change', function(){
