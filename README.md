@@ -314,6 +314,22 @@ function addEventTrigger(fields, identifier){
     })
 }
 ```
+
+untuk memuat kembali data SVG yang telah diedit sebelumnya ketika editor di refresh/re-open, panggil fungsi `loadSVGData()` pada fungsi `loadWidgetData()`. jika terdapat lebih dari 2 svg yang diubah, panggil lagi fungsi tersebut dengan menyesuaikan nama variabel svg nya.
+```javascript
+function loadWidgetData(fields, identifier) {
+    $.each(fields, function(key, field){
+        if (field.type === 'colorPicker') {
+            loadData("."+field.id, field.css, identifier)
+        } else if (field.type === 'number') {
+            loadDataNumber("."+field.id, field.css, identifier)
+        }
+    })
+
+    // jika mengubah warna svg, panggil fungsi loadSVGData dibaris dibawah ini
+    // loadSVGData("--nama-variabel-svg","nama-variabel-warna","FFCD40");
+}
+```
     
 ## Contributing
 
