@@ -7,6 +7,7 @@
     <title>Chat Widget Editor</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css">
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <script src="./config/js/tailwind.config.js"></script>
     <!-- external css -->
@@ -20,8 +21,9 @@
         <nav class="border-0 bg-gray-800">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-5 py-2">
                 <div class="flex items-center">
-                    <span class="self-center text-xl font-semibold whitespace-nowrap text-white">
-                        Chat Widget Editor v3.0 <span style="font-size: 10px; color: #979797;">by Maruマル</span>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap text-white flex flex-col">
+                        Chat Widget Editor v3.1.0
+                        <span style="font-size: 10px; color: #979797; line-height: 100%;">open source project by Maruマル</span>
                     </span>
                 </div>
                 <div class="flex flex-row">
@@ -145,6 +147,53 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="./config/js/utilities.js"></script>
     <script src="./config/data/css.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+    <script type="text/javascript">
+
+        /** Default configuration **/
+    
+        Coloris({
+          el: '.coloris',
+          swatches: [
+            '#264653',
+            '#2a9d8f',
+            '#e9c46a',
+            '#f4a261',
+            '#e76f51',
+            '#d62828',
+            '#023e8a',
+            '#0077b6',
+            '#0096c7',
+            '#00b4d8',
+            '#48cae4'
+          ]
+        });
+    
+        /** Instances **/
+    
+        Coloris.setInstance('.instance1', {
+          theme: 'pill',
+          themeMode: 'dark',
+          formatToggle: true,
+          closeButton: true,
+          swatches: [
+            '#067bc2',
+            '#84bcda',
+            '#80e377',
+            '#ecc30b',
+            '#f37748',
+            '#d56062'
+          ]
+        });
+    
+        Coloris.setInstance('.instance2', { theme: 'polaroid' });
+    
+        Coloris.setInstance('.instance3', {
+          theme: 'polaroid',
+          swatchesOnly: true
+        });
+    
+        </script>
     <script>
 
         // replace 'test' with unique identifier for each project

@@ -105,7 +105,8 @@ function loadData(selector, key, identifier) {
     $(selector).val( localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim());
     docStyle.setProperty(key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim());
     styleChat = replaceValue(styleChat, key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim())
-
+    // color thumbnail
+    $(selector+'-thumbnail').css('color', localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim())
 }
 
 function loadDataNumber(selector, key, identifier) {
@@ -225,7 +226,6 @@ function addEventTrigger(fields, identifier){
                 localStorage.setItem(identifier+field.css, $(this).val());
                 $("."+field.id).val($(this).val())
                 styleChat = replaceValue(styleChat, field.css, $(this).val())
-
                 // jika ingin merubah svg, panggil fungsi onSVGChange() pada baris dibawah
                 // onSVGChange(field, $(this).val())
 
@@ -1187,9 +1187,11 @@ function generateMenu(fields) {
                     $("#item-widget-"+item['sub-group']).append(`
                         <div class="pb-2">
                             <label class="pl-0">${item.label}</label>
-                            <div class="input-container py-3 flex flex-row">
-                                <input class="custom-input-color-2 ${item.id}" type="color" value="#000000" name="${item.id}">
-                                <input class="ml-2 custom-input-text ${item.id}" type="text" name="${item.id}">
+                            <div class="input-container circle py-3 flex flex-row">
+                                <div class="clr-field ${item.id}-thumbnail" style="color: #000000;">
+                                    <button type="button" aria-labelledby="clr-open-label"></button>
+                                    <input data-coloris class="coloris instance1 ${item.id}" type="text" value="#000000" name="${item.id}">
+                                </div>
                             </div>
                         </div>
                     `)
@@ -1210,9 +1212,11 @@ function generateMenu(fields) {
                     $("#item-widget-"+id).append(`
                         <div class="pb-2">
                             <label class="pl-0">${item.label}</label>
-                            <div class="input-container py-2 flex flex-row">
-                                <input class="custom-input-color-2 ${item.id}" type="color" value="#000000" name="${item.id}">
-                                <input class="ml-2 custom-input-text ${item.id}" type="text" name="${item.id}">
+                            <div class="input-container circle py-3 flex flex-row">
+                                <div class="clr-field ${item.id}-thumbnail" style="color: #000000;">
+                                    <button type="button" aria-labelledby="clr-open-label"></button>
+                                    <input data-coloris class="coloris instance1 ${item.id}" type="text" value="#000000" name="${item.id}">
+                                </div>
                             </div>
                         </div>
                     `)

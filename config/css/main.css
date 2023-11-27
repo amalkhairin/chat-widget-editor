@@ -147,10 +147,30 @@ input[type="number"]:focus {
     border: 1px solid #ffffff;
 }
 
-.custom-input-color-2 {
+/* .custom-input-color-2 {
     width: 25px !important;
     height: 25px !important;
     box-shadow: 1px 1px 1px #323A47 !important;
+} */
+
+.coloris {
+    color: #000000 !important;
+}
+
+.circle .clr-field button {
+    width: 22px;
+    height: 22px;
+    left: 5px;
+    right: auto;
+    border-radius: 5px;
+}
+
+.circle .clr-field input {
+    padding-left: 36px;
+}
+
+.circle .clr-field button {
+    border-radius: 50%;
 }
 
 yt-live-chat-app {
