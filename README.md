@@ -197,7 +197,7 @@ ubah bagian `uniqueId` dengan kode unik untuk setiap project
 5. (Optional)
 Untuk mengubah warna default dari background editor, ubah value variabel `--editor-bg-color: #9b9b9b;` yang ada pada file `main.css`
 
-## UPDATE
+## Change SVG color
 terdapat fungsi tambahan `loadSVGData()` dan `replaceSVGValue` pada `utilities.js` untuk mengubah warna pada SVG tertentu.
 
 fungsi `loadSVGData()` berfungsi untuk memuat data dari SVG yang sudah diedit yang tersimpan di `local storage`. Fungsi memiliki parameter `key`,`identifier`,`initialValue`
@@ -330,7 +330,95 @@ function loadWidgetData(fields, identifier) {
     // loadSVGData("--nama-variabel-svg","nama-variabel-warna","FFCD40");
 }
 ```
-    
+
+## UPDATE
+Menambahkan tipe input Checkbox.
+
+### Setup checkbox/toggle
+Pada file `CSS`, untuk membuat toggle tambahkan variabel dan identifiernya seperti contoh:
+```css
+  /* profile */
+  --show-profile: block;
+  /* end-profile */
+```
+
+Pada `utilities.js` pada fungsi `loadWidgetStyle`, tambahkan
+```javascript
+let profile = getStyle(styleChat, "/* profile */","/* end-profile */");
+generateStyleData(profile, "Chat Settings", "none", "checkbox")
+```
+
+pada `utilities.js` tedapat fungsi untuk load data checkbox ketika pertama dibuka
+```javascript
+// load data checkbox
+function loadDataCheckbox(selector, key, identifier) {
+// ganti 'block' dengan value dari toggle. contoh value dari --show-profile: block pada css
+if((localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim()) === 'block') {
+    $(selector).prop('checked', true);
+} else {
+    $(selector).prop('checked', false);
+}
+docStyle.setProperty(key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim());
+styleChat = replaceValue(styleChat, key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim())
+}
+```
+kemudian pada fungsi `loadWidgetData()` panggil fungsi `loadDataCheckbox()` sehingga menjadi seperti berikut
+```javascript
+function loadWidgetData(fields, identifier) {
+$.each(fields, function(key, field){
+    if (field.type === 'colorPicker') {
+        loadData("."+field.id, field.css, identifier)
+    } else if (field.type === 'number') {
+        loadDataNumber("."+field.id, field.css, identifier)
+    //panggil fungsi load data checkbox
+    } else if (field.type === 'checkbox') {
+        loadDataCheckbox("."+field.id, field.css, identifier)   
+    }
+})
+
+// jika mengubah warna svg, panggil fungsi loadSVGData dibaris dibawah ini
+// loadSVGData("--nama-variabel-svg","nama-variabel-warna","FFCD40");
+}
+```
+
+Pada fungsi `addEventTrigger()`, menambah kondisi baru untuk menambahkan trigger pada checkbox
+```javascript
+// menambahkan event trigger pada checkbox
+// ganti 'block' dan 'none' sesuai isi variabel togglenya. contoh value dari --show-profile: block pada css
+} else if (field.type === 'checkbox') {
+    $("#"+field.id).on('change', function(){
+        // ketika toggle checked/aktif
+        if($(this).prop("checked")) {
+            docStyle.setProperty(field.css, "block");
+            localStorage.setItem(identifier+field.css, "block");
+            styleChat = replaceValue(styleChat, field.css, "block");
+        
+        // ketika toggle unchecked atau non-aktif
+        } else {
+            docStyle.setProperty(field.css, "none");
+            localStorage.setItem(identifier+field.css, "none");
+            styleChat = replaceValue(styleChat, field.css, "none");
+        }
+    })
+}
+```
+Sesuaikan value dari variabel toggle seperti pada contoh fungsi diatas, value dari toggle yaitu `block` dan `none`
+
+Pada fungsi `generateMenu()` tambahkan kondisi baru ketika field type merupakan `checkbox`
+```javascript
+// add checkbox
+} else if(item.type === 'checkbox') {
+    $("#item-widget-"+item['sub-group']).append(`
+        <div class="pb-2">
+            <label class="pl-0">${item.label}</label>
+            <div class="input-container py-3">
+                <input class="custom-input-checkbox ${item.id}" id="${item.id}" type="checkbox" name="${item.id}">
+            </div>
+        </div>
+    `)
+}
+```
+
 ## Contributing
 
 Contributions are always welcome!

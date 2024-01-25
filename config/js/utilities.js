@@ -6,10 +6,17 @@ function loadWidgetStyle(){
     let membershipStyle = getStyle(styleChat, "/* membership */","/* end-membership */");
     let scStyle = getStyle(styleChat, "/* sc */","/* end-sc */");
     let chatFontSizeStyle = getStyle(styleChat, "/* chat-font-size */","/* end-chat-font-size */");
+    
+    // profile picture toggle
+    let profile = getStyle(styleChat, "/* profile */","/* end-profile */");
+
     let scFontSizeStyle = getStyle(styleChat, "/* sc-font-size */","/* end-sc-font-size */");
     let membershipFontSizeStyle = getStyle(styleChat, "/* membership-font-size */","/* end-membership-font-size */");
 
     generateStyleData(chatFontSizeStyle, "Chat Settings", "none", "number")
+    // menambahkan type checkbox
+    generateStyleData(profile, "Chat Settings", "none", "checkbox")
+
     generateStyleData(ownerStyle, "Chat Settings", "Streamer", "colorPicker")
     generateStyleData(moderatorStyle, "Chat Settings", "Moderator", "colorPicker")
     generateStyleData(memberStyle, "Chat Settings", "Member", "colorPicker")
@@ -115,12 +122,26 @@ function loadDataNumber(selector, key, identifier) {
     styleChat = replaceValue(styleChat, key, localStorage.getItem(identifier+key) != null ? localStorage.getItem(identifier+key) + 'px' : docStyleGetter.getPropertyValue(key).trim())
 }
 
+// load data checkbox
+function loadDataCheckbox(selector, key, identifier) {
+    // ganti 'block' dengan value dari toggle. contoh value dari --show-profile: block pada css
+    if((localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim()) === 'block') {
+        $(selector).prop('checked', true);
+    } else {
+        $(selector).prop('checked', false);
+    }
+    docStyle.setProperty(key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim());
+    styleChat = replaceValue(styleChat, key, localStorage.getItem(identifier+key) ?? docStyleGetter.getPropertyValue(key).trim())
+}
+
 function loadWidgetData(fields, identifier) {
     $.each(fields, function(key, field){
         if (field.type === 'colorPicker') {
             loadData("."+field.id, field.css, identifier)
         } else if (field.type === 'number') {
             loadDataNumber("."+field.id, field.css, identifier)
+        } else if (field.type === 'checkbox') {
+            loadDataCheckbox("."+field.id, field.css, identifier)   //panggil fungsi load data checkbox
         }
     })
 
@@ -235,6 +256,24 @@ function addEventTrigger(fields, identifier){
                 docStyle.setProperty(field.css, $(this).val() + "px");
                 localStorage.setItem(identifier+field.css, $(this).val());
                 styleChat = replaceValue(styleChat, field.css, $(this).val() + "px");
+            })
+        
+        // menambahkan event trigger pada checkbox
+        // ganti 'block' dan 'none' sesuai isi variabel togglenya. contoh value dari --show-profile: block pada css
+        } else if (field.type === 'checkbox') {
+            $("#"+field.id).on('change', function(){
+                // ketika toggle checked/aktif
+                if($(this).prop("checked")) {
+                    docStyle.setProperty(field.css, "block");
+                    localStorage.setItem(identifier+field.css, "block");
+                    styleChat = replaceValue(styleChat, field.css, "block");
+                
+                // ketika toggle unchecked atau non-aktif
+                } else {
+                    docStyle.setProperty(field.css, "none");
+                    localStorage.setItem(identifier+field.css, "none");
+                    styleChat = replaceValue(styleChat, field.css, "none");
+                }
             })
         }
     })
@@ -1204,6 +1243,17 @@ function generateMenu(fields) {
                             </div>
                         </div>
                     `)
+
+                // add checkbox
+                } else if(item.type === 'checkbox') {
+                    $("#item-widget-"+item['sub-group']).append(`
+                        <div class="pb-2">
+                            <label class="pl-0">${item.label}</label>
+                            <div class="input-container py-3">
+                                <input class="custom-input-checkbox ${item.id}" id="${item.id}" type="checkbox" name="${item.id}">
+                            </div>
+                        </div>
+                    `)
                 }
 
 
@@ -1226,6 +1276,17 @@ function generateMenu(fields) {
                             <label class="pl-0">${item.label}</label>
                             <div class="input-container py-2">
                                 <input class="custom-input-text ${item.id}" id="${item.id}" type="number" name="${item.id}">
+                            </div>
+                        </div>
+                    `)
+
+                // add checkbox
+                } else if (item.type === 'checkbox') {
+                    $("#item-widget-"+id).append(`
+                        <div class="pb-2">
+                            <label class="pl-0">${item.label}</label>
+                            <div class="input-container py-2">
+                                <input class="custom-input-checkbox ${item.id}" id="${item.id}" type="checkbox" name="${item.id}">
                             </div>
                         </div>
                     `)

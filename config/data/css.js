@@ -63,6 +63,10 @@ var styleChat =
   --message-font-size: 16px;
   /* end-chat-font-size */
 
+  /* profile */
+  --show-profile: block;
+  /* end-profile */
+
   /* sc-font-size */
   --sc-name-font-size: 16px;
   --sc-amount-font-size: 24px;
